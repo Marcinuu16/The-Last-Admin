@@ -1,3 +1,39 @@
 [gd_scene format=3 uid="uid://beaw1pigp5836"]
 
-[node name="Player" type="Node3D" unique_id=596499783]
+[ext_resource type="Script" uid="uid://dgd2gbyslr4sk" path="res://entities/player/player.gd" id="1_symyc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccwub"]
+albedo_color = Color(0.15433852, 0.008181313, 0.039164484, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7pxhf"]
+material = SubResource("StandardMaterial3D_ccwub")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o6x7"]
+albedo_color = Color(1, 0.35686275, 0.34509805, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ccwub"]
+material = SubResource("StandardMaterial3D_5o6x7")
+radius = 0.53808594
+height = 1.0761719
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7pxhf"]
+
+[node name="Player" type="CharacterBody3D" unique_id=180061358]
+script = ExtResource("1_symyc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=845791984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_7pxhf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2134797842]
+transform = Transform3D(6.5567036e-08, -0.36237162, -5.9604645e-08, 8.940697e-08, -1.4901165e-08, 1, -1, -2.375965e-08, 1.1920929e-07, -1.0214052e-14, 0.52578855, -0.013121292)
+mesh = SubResource("CapsuleMesh_ccwub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=611926844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_7pxhf")
+
+[node name="CameraHandle" type="Node3D" parent="." unique_id=1795835856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraHandle" unique_id=1281179822]
