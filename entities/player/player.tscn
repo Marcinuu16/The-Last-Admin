@@ -19,6 +19,7 @@ height = 1.0761719
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7pxhf"]
 
 [node name="Player" type="CharacterBody3D" unique_id=180061358]
+collision_layer = 2
 script = ExtResource("1_symyc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=845791984]

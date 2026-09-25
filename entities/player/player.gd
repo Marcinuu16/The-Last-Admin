@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+var lock: bool = true
 
 # Reference to the camera pivot handle
 @onready var camera_handle = $CameraHandle
@@ -25,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle movement.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir := Input.get_vector("action_left", "action_right", "action_forward", "action_backward")
 	
 	# transform.basis now updates correctly when the body rotates!
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -39,8 +40,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event.is_action_pressed("ui_cancel"):
+		lock = !lock
+		if lock:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		# 1. Rotate the WHOLE CHARACTER BODY left/right (Y-axis)
