@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="The last admin"
-run/main_scene="uid://dbmqcbovl0qt7"
+run/main_scene="uid://hke8e24dqyl7"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="uid://hj4l2bnqagjf"
+config/icon="uid://cowj4lhekwug1"
+
+[autoload]
+
+GameFlags="*uid://cedmypkbroavs"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -52,6 +57,11 @@ action_right={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
 ]
 }
+action_interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -67,3 +77,4 @@ action_right={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"

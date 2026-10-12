@@ -7,6 +7,7 @@ var lock: bool = true
 # Reference to the camera pivot handle
 @onready var camera_handle = $CameraHandle
 @onready var camera = $CameraHandle/Camera3D
+@onready var buffer_time = $BufferTime
 
 @export var mouse_sensitivity: float = 0.003
 
@@ -22,8 +23,15 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept"):
+		print("jump buffer started")
+		buffer_time.start()
+		
+
+	if is_on_floor() and buffer_time.time_left > 0:
+		print("jump")
 		velocity.y = JUMP_VELOCITY
+		buffer_time.stop()
 
 	# Get the input direction and handle movement.
 	var input_dir := Input.get_vector("action_left", "action_right", "action_forward", "action_backward")
