@@ -85,13 +85,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, 1.5)
 shape = SubResource("BoxShape3D_7pxhf")
 debug_color = Color(0.9764706, 0.58431375, 0.40784314, 1)
 
-[node name="Control" type="CanvasLayer" parent="." unique_id=1339315068]
-
-[node name="Label" type="Label" parent="Control" unique_id=902316665]
-offset_right = 502.0
-offset_bottom = 290.0
-theme_override_font_sizes/font_size = 32
-text = "tekst"
-
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -22,10 +22,12 @@ script = ExtResource("1_symyc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=845791984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_7pxhf")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1572493083]
-transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 1.1333008, 0.5871049)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1572493083]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0.13330078, 0.5871049)
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_symyc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=611926844]
@@ -43,6 +45,13 @@ one_shot = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2079340347]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-light_color = Color(0.8764638, 0.6063275, 0.35047534, 1)
 omni_range = 10.0
 omni_attenuation = 2.0
+
+[node name="Control" type="CanvasLayer" parent="." unique_id=1298820888]
+
+[node name="Label" type="Label" parent="Control" unique_id=1864472984]
+offset_right = 502.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 32
+text = "tekst"

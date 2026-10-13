@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+const SPEED = 3.0
 const JUMP_VELOCITY = 4.5
 var lock: bool = true
 
@@ -17,6 +17,9 @@ var camera_pitch: float = 0.0
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func _process(delta: float) -> void:
+	$Control/Label.text = str(Engine.get_frames_per_second())+" fps"
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -32,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		print("jump")
 		velocity.y = JUMP_VELOCITY
 		buffer_time.stop()
+		
 
 	# Get the input direction and handle movement.
 	var input_dir := Input.get_vector("action_left", "action_right", "action_forward", "action_backward")
@@ -44,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
 	
 	move_and_slide()
 
@@ -67,3 +72,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_handle.rotation.x = camera_pitch
 		camera_handle.rotation.y = 0.0
 		camera_handle.rotation.z = 0.0
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
